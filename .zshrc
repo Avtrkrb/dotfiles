@@ -156,10 +156,10 @@ POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='%F{blue}-'
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status time ram newline virtualenv battery load)
 # old
 
-alias ls="exa --colour=always --icons"
+alias ls="eza --colour=always --icons"
 alias kubectl="kubecolor"
 alias k="kubecolor"
-alias aider="aider --code-theme monokai --dark-mode --model gpt-4-1106-preview"
+alias aider="aider --code-theme monokai --dark-mode --4turbo"
 export PATH=$PATH:$HOME/.local/bin:$(go env GOPATH)/bin
 source /usr/share/nvm/init-nvm.sh
 
@@ -174,3 +174,11 @@ POWERLEVEL9K_CUSTOM_OS_ICON_BACKGROUND=
 POWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND=
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh root_indicator dir dir_writable vcs newline)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(custom_os_icon command_execution_time status time ram newline virtualenv wifi battery load)
+
+export ANDROID_HOME=/opt/android-sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export PATH=$PATH:$ANDROID_HOME
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export REACT_EDITOR=vim
