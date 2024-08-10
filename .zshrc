@@ -7,7 +7,11 @@ fi
 
 # Created by newuser for 5.8
 if [[ $(tty) == /dev/pts/* ]]; then
-	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+    if [ -f /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme ]; then
+	    source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+	else
+	    ZSH_THEME="powerlevel10k/powerlevel10k"
+	fi
 else
 	clear
 	echo
@@ -156,24 +160,20 @@ POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='%F{blue}-'
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status time ram newline virtualenv battery load)
 # old
 
-alias ls="eza --colour=always --icons"
-alias kubectl="kubecolor"
-alias k="kubecolor"
-alias aider="aider --code-theme monokai --dark-mode --4turbo"
-export PATH=$PATH:$HOME/.local/bin:$(go env GOPATH)/bin
-source /usr/share/nvm/init-nvm.sh
-
-# alias kube-explorer=/usr/local/bin/kube-explorer --kubeconfig=~/.kube/config --insecure-skip-tls-verify
-# [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 POWERLEVEL9K_CUSTOM_OS_ICON='echo -n "%{$fg[green]%}$(kubectx_prompt_info)%{$reset_color%} \U26A1\U1F525\U1F32A"'
 POWERLEVEL9K_CUSTOM_OS_ICON_BACKGROUND=
 POWERLEVEL9K_CUSTOM_OS_ICON_FOREGROUND=
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon ssh root_indicator dir dir_writable vcs newline)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(custom_os_icon command_execution_time status time ram newline virtualenv wifi battery load)
+
+alias ls="eza --colour=always --icons"
+alias kubectl="kubecolor"
+alias k="kubecolor"
+export PATH=$PATH:$HOME/.local/bin:$(go env GOPATH)/bin
+source /usr/share/nvm/init-nvm.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export ANDROID_HOME=/opt/android-sdk
 export ANDROID_SDK_ROOT=$ANDROID_HOME
